@@ -1,0 +1,31 @@
+body{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#bd, #restart{
+    margin:auto;
+}
+
+#container{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.but_col {
+    width: 50px;
+    height: 50px;
+    margin: 1px;
+    vertical-align: middle;
+    font-weight: 700;
+    border-radius: 8px;
+    transition-duration: 0.4s;
+    font-size: 0px;
+    background-color: black;
+}
+
+#restartButton{
+    display: none;
+}
