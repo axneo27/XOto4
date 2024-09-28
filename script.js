@@ -95,35 +95,42 @@ function disableButtons(){
 
 function checkWin(buttons2d, x, y, buttonsTEXT) {
     // check row
-    let xinrow = 1;
-    let oinrow = 1;
-    for (let i = 0; i < 6; i++) {
-        if (buttons2d[x][i].textContent === buttons2d[x][i+1].textContent && buttons2d[x][i].textContent === "X") {
-            xinrow += 1;
-        } else if (buttons2d[x][i].textContent === buttons2d[x][i+1].textContent && buttons2d[x][i].textContent === "O") {
-            oinrow += 1;
-        } 
-    }
-
-    // check column
-    let xincolumn = 1;
-    let oincolumn = 1;
-    for (let i = 0; i < 6; i++) {
-        if (buttons2d[i][y].textContent === buttons2d[i+1][y].textContent && buttons2d[i][y].textContent === "X") {
-            xincolumn += 1;
-        } else if (buttons2d[i][y].textContent === buttons2d[i+1][y].textContent && buttons2d[i][y].textContent === "O") {
-            oincolumn += 1;
+    let inrow = 1;
+    let i = 0;
+    while (i < 6) {
+        if(buttonsTEXT[x][i] === buttonsTEXT[x][i+1] && (buttonsTEXT[x][i] == "X" || buttonsTEXT[x][i] == "O")) {
+            inrow++;
+        }else if (inrow >= 4) {
+            break;
+        }else if (buttonsTEXT[x][i] !== buttonsTEXT[x][i+1] && (buttonsTEXT[x][i] == "X" || buttonsTEXT[x][i] == "O")){
+            inrow = 1;
         }
+        i++;
+    }
+    // check column
+    let incolumn = 1;
+    i = 0;
+    while (i < 6) {
+        if(buttonsTEXT[i][y] === buttonsTEXT[i+1][y] && (buttonsTEXT[i][y] == "X" || buttonsTEXT[i][y] == "O")) {
+            incolumn++;
+        }else if (incolumn >= 4) {
+            break;
+        }else if (buttonsTEXT[i][y] !== buttonsTEXT[i+1][y] && (buttonsTEXT[i][y] == "X" || buttonsTEXT[i][y] == "O")){
+            incolumn = 1;
+        }
+        i++;
     }
 
-    if (xincolumn >= 4 || xinrow >= 4) {
-        winnerX = true;
-        let board = document.getElementById("board");
-        board.innerText = "RED wins";
-    } else if (oincolumn >= 4 || oinrow >= 4) {
-        winnerO = true;
-        let board = document.getElementById("board");
-        board.innerText = "BLUE wins";
+    if (incolumn >= 4 || inrow >= 4) {
+        if (buttons2d[x][y].textContent === "X") {
+            winnerX = true;
+            let board = document.getElementById("board");
+            board.innerText = "RED wins";
+        }else if (buttons2d[x][y].textContent === "O") {
+            winnerO = true;
+            let board = document.getElementById("board");
+            board.innerText = "BLUE wins";
+        }
     }
     checkDiagonals(buttonsTEXT, x, y);
 
