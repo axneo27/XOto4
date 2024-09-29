@@ -52,7 +52,7 @@ function displayAvailableMoves(buttonsCollection, x, y) {
     if (buttonsCollection[x][y].textContent === "X" || buttonsCollection[x][y].textContent === "O") {
         if (x > 0) {
             buttonsCollection[x-1][y].textContent = "-";
-            buttonsCollection[x-1][y].style.background = "#91c1e3";
+            buttonsCollection[x-1][y].style.background = "#cfcdc8";
         }
     }
 }
@@ -69,7 +69,7 @@ function displayRestartButton(){
                 if (i == 6){
                     let buttonsRow7 = document.querySelectorAll(`.row7 .but_col`);
                     buttonsRow7[j].textContent = "-";
-                    buttonsRow7[j].style.background = "#91c1e3";
+                    buttonsRow7[j].style.background = "#cfcdc8";
                 }else{
                     buttonsCollection[i][j].style.background = "black";
                     buttonsCollection[i][j].textContent = "";
@@ -217,7 +217,7 @@ function createFunctionsButtons() {
 
         let buttonsRow7 = document.querySelectorAll(`.row7 .but_col`);
         buttonsRow7[i].textContent = "-";
-        buttonsRow7[i].style.background = "#91c1e3";
+        buttonsRow7[i].style.background = "#cfcdc8";
         for (let j = 0; j < 7; j++) {
             buttons[j].addEventListener("click", function() {
                 if (TurnO && buttons[j].textContent === "-") {
