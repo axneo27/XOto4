@@ -50,7 +50,7 @@ function showTable() {
 
 function displayAvailableMoves(buttonsCollection, x, y) {
     if (buttonsCollection[x][y].textContent === "X" || buttonsCollection[x][y].textContent === "O") {
-        if (x > 0) {
+        if (x > 0 && buttonsCollection[x-1][y].textContent === "") {
             buttonsCollection[x-1][y].textContent = "-";
             buttonsCollection[x-1][y].style.background = "#cfcdc8";
         }
