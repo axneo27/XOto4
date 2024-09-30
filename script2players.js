@@ -48,16 +48,8 @@ function showTable() {
     return buttonCol;
 }
 
-function displayAvailableMoves(buttonsCollection, x, y) {
-    if (buttonsCollection[x][y].textContent === "X" || buttonsCollection[x][y].textContent === "O") {
-        if (x > 0 && buttonsCollection[x-1][y].textContent === "") {
-            buttonsCollection[x-1][y].textContent = "-";
-            buttonsCollection[x-1][y].style.background = "#cfcdc8";
-        }
-    }
-}
-
 function displayRestartButton(){
+    TurnO = false;
     winnerO = false;
     winnerX = false;
     let restartButton = document.getElementById("restartButton");
@@ -77,10 +69,9 @@ function displayRestartButton(){
                 buttonsCollection[i][j].disabled = false;
             }
         }
-        restartButton.style.display = "none";
         let board = document.getElementById("board");
         board.innerText = "The game is on";
-
+        
     });
 }
 
@@ -89,6 +80,15 @@ function disableButtons(){
     for (let i = 0; i < 7; i++) {
         for (let j = 0; j < 7; j++) {
             buttonsCollection[i][j].disabled = true;
+        }
+    }
+}
+
+function displayAvailableMoves(buttonsCollection, x, y) {
+    if (buttonsCollection[x][y].textContent === "X" || buttonsCollection[x][y].textContent === "O") {
+        if (x > 0 && buttonsCollection[x-1][y].textContent === "") {
+            buttonsCollection[x-1][y].textContent = "-";
+            buttonsCollection[x-1][y].style.background = "#cfcdc8";
         }
     }
 }
